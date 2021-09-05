@@ -33,7 +33,7 @@ public class App {
             FileWriter f = new FileWriter("pass.txt");
             PrintWriter pwr = new PrintWriter(f);
             pwr.print(passList.user);
-            pwr.print(passList.pass);
+            if(!passList.hollow()) { pwr.print(passList.retrieval()); }
             pwr.print(passList.place);
             pwr.close();
             iSiker = 1;

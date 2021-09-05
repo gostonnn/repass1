@@ -7,4 +7,14 @@ public class Store {
         this.pass = pass;
         this.place = place;
     }
+    public String retrieval() {
+        return pass;
+    }
+    public boolean hollow() {
+        if(this.pass == "") {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
