@@ -5,47 +5,47 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        nevjegy();
+        namemark();
         //Fejrész kiírása
         System.out.println("Jelszavak");
         //Verzió kiírása
         System.out.println("Verzió: 0.0.1");
         
         //Az a objektummal kérhetünk be a konzolról
-        Scanner a = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Felhasználónév: ");
         // A b változó tárolja a jelszót
-        String b = a.nextLine();
+        String name = scanner.nextLine();
         System.out.print("Jelszó: ");
-        String c = a.nextLine();
+        String password = scanner.nextLine();
         System.out.print("Hely: ");
-        String d = a.nextLine();
-        a.close();
-        int iSiker = 0;
+        String city = scanner.nextLine();
+        scanner.close();
+        int success = 0;
         try {
             /* 
             A jelszó, a felhasználónév és a 
             használati helye a passList 
             objektumban van tárolva            
             */
-            Store passList = new Store(b, c, d);
-            FileWriter f = new FileWriter("pass.txt");
-            PrintWriter pwr = new PrintWriter(f);
-            pwr.print(passList.user);
-            if(!passList.hollow()) { pwr.print(passList.retrieval()); }
-            pwr.print(passList.place);
+            Store passStore = new Store(name, password, city);
+            FileWriter file = new FileWriter("pass.txt");
+            PrintWriter pwr = new PrintWriter(file);
+            pwr.print(passStore.user);
+            if(!passStore.hollow()) { pwr.print(passStore.retrieval()); }
+            pwr.print(passStore.place);
             pwr.close();
-            iSiker = 1;
+            success = 1;
         } catch (IOException e) {
             System.err.println("Hiba! A fájlbaírás sikertelen. Keresse meg a fejlesztőt.");
         }
 
-        if(iSiker == 1) { System.out.println("Ok. A kiírás sikeres.");  }else {  System.out.println("Hiba! A kiírás sikertelen"); }
+        if(success == 1) { System.out.println("Ok. A kiírás sikeres.");  }else {  System.out.println("Hiba! A kiírás sikertelen"); }
 
     }
 
-    public static void nevjegy() {
+    public static void namemark() {
         System.out.println("Nagy János");
     }
 }
